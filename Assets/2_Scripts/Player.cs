@@ -1,15 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private float JumpPower = 0;
+    [SerializeField] private float JumpPowerIncrede = 1;
 
     private Rigidbody2D rigd;
     private Animator anim;
-    
+
     private void Awake()
     {
         rigd = GetComponent<Rigidbody2D>();
@@ -18,7 +16,7 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        
+
     }
 
     private void Update()
@@ -29,8 +27,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            JumpPower += 1;
-        } 
+            JumpPower += JumpPowerIncrede;
+        }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             rigd.AddForce(Vector2.one * JumpPower);
@@ -44,5 +42,6 @@ public class Player : MonoBehaviour
     {
         rigd.velocity = Vector2.zero;
         anim.SetInteger("StateID", 0);
+        CamaraManager.Instance.OnFollow(transform.position);
     }
 }

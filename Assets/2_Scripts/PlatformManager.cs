@@ -7,7 +7,31 @@ public class PlatformManager : MonoBehaviour
     public class Data
     {
         public int GroupCount;
+        [SerializeField] private float LargePercent;
+        [SerializeField] private float MiddlePercent;
+        [SerializeField] private float SmallPercent;
+
+        public int GetPlatformID()
+        {
+            float randNal = Random.value;
+            int PlatformID;
+            if (randNal <= LargePercent)
+            {
+                PlatformID = 2;
+            }
+            else if (randNal <= LargePercent + MiddlePercent)
+            {
+                PlatformID = 1;
+            }
+            else
+            {
+                PlatformID = 0;
+            }
+            return PlatformID;
+        }
     }
+
+
 
     [SerializeField] private Transform spawnPosTrf;
     [SerializeField] private Platform[] LargePlatformArr;
@@ -16,6 +40,8 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] private Data[] DataArr;
     private int platformNum = 0;
 
+    [SerializeField] private float GetIntevalMin = 1.0f;
+    [SerializeField] private float GetIntevalmax = 2.0f;
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
 
     internal void Init()
@@ -34,26 +60,30 @@ public class PlatformManager : MonoBehaviour
         {
             platformGroupSum += data.GroupCount;
             Debug.Log($"platformGroupSum: {platformGroupSum} ======== ");
-            while(platformNum < platformGroupSum)
+            while (platformNum < platformGroupSum)
             {
-                pos = ActiveOne(pos);
+                int platformID = data.GetPlatformID();
+                pos = ActiveOne(pos, platformID);
                 platformNum++;
             }
         }
     }
 
-    private Vector3 ActiveOne(Vector3 pos)
+    private Vector3 ActiveOne(Vector3 pos, int platformID)
     {
-        Platform[] platforms = PlatformArrDic[2];
+        Platform[] platforms = PlatformArrDic[platformID];
 
         int randID = Random.Range(0, platforms.Length);
         Platform randomPlatform = platforms[randID];
-
         Platform platform = Instantiate(randomPlatform);
-        platform.Active(pos);
-        Debug.Log($"Active pos: {pos}");
 
-        pos = pos + Vector3.right * 6;
+        if (platformNum != 0)
+            pos = pos + Vector3.right * platform.GetHallSizeX();
+
+        platform.Active(pos);
+
+        float gap = Random.Range(GetIntevalMin, GetIntevalmax);
+        pos = pos + Vector3.right * platform.GetHallSizeX() * gap;
         return pos;
     }
 }
