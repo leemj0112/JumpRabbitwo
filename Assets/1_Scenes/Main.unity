@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49389bb9f68c7c94097a4cd5faac419f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPowerIncrede: 6
 --- !u!50 &110601817
 Rigidbody2D:
   serializedVersion: 4
@@ -583,6 +582,7 @@ MonoBehaviour:
   platformManager: {fileID: 98691494}
   player: {fileID: 110601816}
   CamaraManager: {fileID: 499460824}
+  dataBaseManager: {fileID: 11400000, guid: 09e34eba3d643464988af5d3daad745c, type: 2}
 --- !u!4 &1609432643
 Transform:
   m_ObjectHideFlags: 0

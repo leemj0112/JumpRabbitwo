@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CamaraManager : MonoBehaviour
 {
-    [SerializeField] private float folSpeed = 5;
     public static CamaraManager Instance;
 
     public void init()
@@ -20,7 +19,7 @@ public class CamaraManager : MonoBehaviour
     {
         while (0.1f < Vector3.Distance(transform.position, transTarget))
         {
-            transform.position = Vector3.Lerp(transform.position, transTarget, Time.deltaTime * folSpeed);
+            transform.position = Vector3.Lerp(transform.position, transTarget, Time.deltaTime * DataBaseManager.Instance.folSpeed);
             yield return null;
         }
     }

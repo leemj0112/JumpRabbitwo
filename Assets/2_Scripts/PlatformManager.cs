@@ -31,24 +31,16 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-
-
+    //전체 이동, 스폰 제외
     [SerializeField] private Transform spawnPosTrf;
-    [SerializeField] private Platform[] LargePlatformArr;
-    [SerializeField] private Platform[] MiddlePlatformArr;
-    [SerializeField] private Platform[] SmallPlatformArr;
-    [SerializeField] private Data[] DataArr;
-    private int platformNum = 0;
 
-    [SerializeField] private float GetIntevalMin = 1.0f;
-    [SerializeField] private float GetIntevalmax = 2.0f;
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
-
+    private int platformNum = 0;
     internal void Init()
     {
-        PlatformArrDic.Add(0, SmallPlatformArr);
-        PlatformArrDic.Add(1, MiddlePlatformArr);
-        PlatformArrDic.Add(2, LargePlatformArr);
+        PlatformArrDic.Add(0, DataBaseManager.Instance.SmallPlatformArr);
+        PlatformArrDic.Add(1, DataBaseManager.Instance.MiddlePlatformArr);
+        PlatformArrDic.Add(2, DataBaseManager.Instance.LargePlatformArr);
     }
 
     internal void Active()
@@ -56,7 +48,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 pos = spawnPosTrf.position;
 
         int platformGroupSum = 0;
-        foreach (Data data in DataArr)
+        foreach (Data data in DataBaseManager.Instance.DataArr)
         {
             platformGroupSum += data.GroupCount;
             Debug.Log($"platformGroupSum: {platformGroupSum} ======== ");
@@ -82,7 +74,7 @@ public class PlatformManager : MonoBehaviour
 
         platform.Active(pos);
 
-        float gap = Random.Range(GetIntevalMin, GetIntevalmax);
+        float gap = Random.Range(DataBaseManager.Instance.GetIntevalMin, DataBaseManager.Instance.GetIntevalmax);
         pos = pos + Vector3.right * platform.GetHallSizeX() * gap;
         return pos;
     }

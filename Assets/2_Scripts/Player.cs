@@ -3,7 +3,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float JumpPower = 0;
-    [SerializeField] private float JumpPowerIncrede = 1;
 
     private Rigidbody2D rigd;
     private Animator anim;
@@ -27,7 +26,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            JumpPower += JumpPowerIncrede;
+            JumpPower += DataBaseManager.Instance.JumpPowerIncrede;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
