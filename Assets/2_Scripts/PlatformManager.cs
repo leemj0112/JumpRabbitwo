@@ -51,7 +51,6 @@ public class PlatformManager : MonoBehaviour
         foreach (Data data in DataBaseManager.Instance.DataArr)
         {
             platformGroupSum += data.GroupCount;
-            Debug.Log($"platformGroupSum: {platformGroupSum} ======== ");
             while (platformNum < platformGroupSum)
             {
                 int platformID = data.GetPlatformID();

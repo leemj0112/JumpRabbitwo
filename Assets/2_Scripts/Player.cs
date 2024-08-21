@@ -42,5 +42,10 @@ public class Player : MonoBehaviour
         rigd.velocity = Vector2.zero;
         anim.SetInteger("StateID", 0);
         CamaraManager.Instance.OnFollow(transform.position);
+
+        if (collision.transform.parent.TryGetComponent(out Platform platform))
+        {
+            platform.OnLanding();
+        }
     }
 }
