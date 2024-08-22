@@ -21,6 +21,7 @@ public class DataBaseManager : ScriptableObject
     public PlatformManager.Data[] DataArr;
     public float GetIntevalMin = 1.0f;
     public float GetIntevalmax = 2.0f;
+    public float BounsValue = 0.05f;
 
     [Header("카메라")]
     public float folSpeed = 5; //CameraManager에서 이동

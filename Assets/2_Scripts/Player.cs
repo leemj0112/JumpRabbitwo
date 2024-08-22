@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigd;
     private Animator anim;
 
+    private Platform landPlatform;
+
     private void Awake()
     {
         rigd = GetComponent<Rigidbody2D>();
@@ -44,8 +46,17 @@ public class Player : MonoBehaviour
         CamaraManager.Instance.OnFollow(transform.position);
 
         if (collision.transform.parent.TryGetComponent(out Platform platform))
+
+            ScoreManager.instance.addScore(platform.Score, platform.transform.position);
+
+        if (landPlatform != platform)
         {
-            platform.OnLanding();
+            //º¸³Ê½º
+            ScoreManager.instance.addBouns(DataBaseManager.Instance.BounsValue, transform.position);
+        }
+        else
+        {
+            ScoreManager.instance.ResetBouns();
         }
     }
 }

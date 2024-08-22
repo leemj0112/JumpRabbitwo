@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Platform : MonoBehaviour
 {
     private BoxCollider2D call;
     [SerializeField] private int score;
+
+    public int Score => score;
 
     public float GetHallSizeX()
     {
@@ -23,6 +26,6 @@ public class Platform : MonoBehaviour
 
     internal void OnLanding()
     {
-        ScoreManager.instance.addScore( score );
+        ScoreManager.instance.addScore(score, transform.position );
     }
 }
