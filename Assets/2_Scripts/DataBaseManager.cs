@@ -16,6 +16,7 @@ public class DataBaseManager : ScriptableObject
     [Header("¿¬Ãâ")]
     public Color Scorecolor;
     public Color bonuscolor;
+    public float ScorePopInterval = 0.2f;
 
     [Header("ÇÃ·§Æû")]
     public Platform[] LargePlatformArr; //PlatformManager¿¡¼­ ÀÌµ¿
