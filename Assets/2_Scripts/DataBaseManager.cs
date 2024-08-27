@@ -11,8 +11,11 @@ public class DataBaseManager : ScriptableObject
         Instance = this;
     }
     [Header("플레이어")]
-    
     [Tooltip("점프를 하면 추가되는 파워")]public float JumpPowerIncrede = 1; //Player에서 이동
+
+    [Header("연출")]
+    public Color Scorecolor;
+    public Color bonuscolor;
 
     [Header("플랫폼")]
     public Platform[] LargePlatformArr; //PlatformManager에서 이동

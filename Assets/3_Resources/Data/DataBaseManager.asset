@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DataBaseManager
   m_EditorClassIdentifier: 
   JumpPowerIncrede: 2
+  Scorecolor: {r: 1, g: 1, b: 1, a: 0}
+  bonuscolor: {r: 0.5424528, g: 0.79135245, b: 1, a: 0}
   LargePlatformArr:
   - {fileID: 4861507650576056314, guid: 5946574c23353024c947a66bd3e5f347, type: 3}
   - {fileID: 4861507650576056314, guid: d5c7281169689424a83639fba3056684, type: 3}
@@ -41,4 +43,5 @@ MonoBehaviour:
     SmallPercent: 0.3
   GetIntevalMin: 1
   GetIntevalmax: 2
+  BounsValue: 0.05
   folSpeed: 5

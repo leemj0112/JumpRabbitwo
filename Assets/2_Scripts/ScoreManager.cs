@@ -23,15 +23,21 @@ public class ScoreManager : MonoBehaviour
     {
         Score scoreObject = Instantiate(BaseScore);
         scoreObject.transform.position = ScorePos;
-        scoreObject.Active(score);
+        scoreObject.Active(score.ToString(), DataBaseManager.Instance.Scorecolor);
 
         tortalScore += score;
         ScoreTmp.text = tortalScore.ToString();
 
     }
 
-    internal void addBouns(float bounsValue, Vector3 position)
+    internal void addBouns(float bounsValue, Vector2 position)
     {
+        Score scoreObject = Instantiate(BaseScore);
+        scoreObject.transform.position = position;
+
+        string str = "Bonus " + bounsValue.toPersentString();
+        scoreObject.Active(str, DataBaseManager.Instance.bonuscolor);
+
         tortalbonus += bounsValue;
         bonusTmp.text = tortalbonus.toPersentString();
     }
