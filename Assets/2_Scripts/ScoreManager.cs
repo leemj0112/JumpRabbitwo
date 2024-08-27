@@ -12,9 +12,12 @@ public class ScoreManager : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI ScoreTmp;
+    [SerializeField] private TextMeshProUGUI bonusTmp;
+
     [SerializeField] private Score BaseScore;
 
     private int tortalScore;
+    private float tortalbonus;
 
     public void addScore(int score, Vector2 ScorePos)
     {
@@ -29,11 +32,13 @@ public class ScoreManager : MonoBehaviour
 
     internal void addBouns(float bounsValue, Vector3 position)
     {
-        //throw new NotImplementedException();
+        tortalbonus += bounsValue;
+        bonusTmp.text = tortalbonus.toPersentString();
     }
 
     internal void ResetBouns()
     {
-        //throw new NotImplementedException();
+        tortalbonus = 0;
+        bonusTmp.text = tortalbonus.toPersentString();
     }
 }

@@ -54,9 +54,7 @@ public class Player : MonoBehaviour
             //º¸³Ê½º
             ScoreManager.instance.addBouns(DataBaseManager.Instance.BounsValue, transform.position);
         }
-        else
-        {
-            ScoreManager.instance.ResetBouns();
-        }
+        else ScoreManager.instance.ResetBouns();
+            landPlatform = platform;
     }
 }
