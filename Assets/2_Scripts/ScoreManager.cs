@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class ScoreManager : MonoBehaviour
     private int tortalScore;
     private float tortalbonus;
 
-    public void addScore(int score, Vector2 ScorePos)
+    public void addScore(int score, Vector2 ScorePos, bool IsCallBonus = true)
     {
         //애니메이션
         ScoredataList.Add(new ScoreData()
@@ -68,6 +69,12 @@ public class ScoreManager : MonoBehaviour
         //캔버스
         tortalScore += score;
         ScoreTmp.text = tortalScore.ToString();
+
+        if (IsCallBonus)
+        {
+            int bonusSocre = (int)(score * tortalbonus);
+            addScore(bonusSocre, ScorePos, false);
+        }
 
     }
 
@@ -86,9 +93,17 @@ public class ScoreManager : MonoBehaviour
         bonusTmp.text = tortalbonus.toPersentString();
     }
 
-    internal void ResetBouns()
+    internal void ResetBouns(Vector2 BonusPos)
     {
         tortalbonus = 0;
         bonusTmp.text = tortalbonus.toPersentString();
+
+        //애니메이션
+        ScoredataList.Add(new ScoreData()
+        {
+            str = "Bonus Reset",
+            color = DataBaseManager.Instance.Scorecolor,
+            pos = BonusPos
+        }) ;
     }
 }
