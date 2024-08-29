@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: DataBaseManager
   m_EditorClassIdentifier: 
   JumpPowerIncrede: 2
+  BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
+  ItemSpwanper: 0.2
+  ItemBOnus: 0.25
   Scorecolor: {r: 1, g: 1, b: 1, a: 0}
   bonuscolor: {r: 0.5424528, g: 0.79135245, b: 1, a: 0}
+  ScorePopInterval: -1.19
   LargePlatformArr:
   - {fileID: 4861507650576056314, guid: 5946574c23353024c947a66bd3e5f347, type: 3}
   - {fileID: 4861507650576056314, guid: d5c7281169689424a83639fba3056684, type: 3}
@@ -33,11 +37,11 @@ MonoBehaviour:
     LargePercent: 1
     MiddlePercent: 0
     SmallPercent: 0
-  - GroupCount: 5
+  - GroupCount: 3
     LargePercent: 0
     MiddlePercent: 1
     SmallPercent: 0
-  - GroupCount: 5
+  - GroupCount: 2
     LargePercent: 0.4
     MiddlePercent: 0.3
     SmallPercent: 0.3

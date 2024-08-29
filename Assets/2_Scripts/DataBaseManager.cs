@@ -13,6 +13,11 @@ public class DataBaseManager : ScriptableObject
     [Header("플레이어")]
     [Tooltip("점프를 하면 추가되는 파워")]public float JumpPowerIncrede = 1; //Player에서 이동
 
+    [Header("아이템")]
+    public Item BaseItem;
+    public float ItemSpwanper = 0.2f;
+    public float ItemBOnus = 0.25f;
+
     [Header("연출")]
     public Color Scorecolor;
     public Color bonuscolor;

@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Platform : MonoBehaviour
 {
@@ -9,23 +7,29 @@ public class Platform : MonoBehaviour
 
     public int Score => score;
 
-    public float GetHallSizeX()
-    {
-        return call.size.x * 0.5f;
-    }
+    public float GetHallSizeX => call.size.x * 0.5f;
+
     private void Awake()
     {
-        call = GetComponentInChildren <BoxCollider2D>();
+        call = GetComponentInChildren<BoxCollider2D>();
     }
 
 
     public void Active(Vector2 pos)
     {
         transform.position = pos;
+
+        if (Random.value < DataBaseManager.Instance.ItemSpwanper)
+        {
+            Item item = Instantiate<Item>(DataBaseManager.Instance.BaseItem);
+            item.Active(transform.position, GetHallSizeX);
+        }
+
+
     }
 
     internal void OnLanding()
     {
-        ScoreManager.instance.addScore(score, transform.position );
+        ScoreManager.instance.addScore(score, transform.position);
     }
 }
