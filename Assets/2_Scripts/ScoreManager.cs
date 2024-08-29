@@ -83,7 +83,7 @@ public class ScoreManager : MonoBehaviour
         //애니메이션
         ScoredataList.Add(new ScoreData()
         {
-            str = "Bonus " + bounsValue.toPersentString(),
+            str = "보너스 " + bounsValue.toPersentString(),
             color = DataBaseManager.Instance.bonuscolor,
             pos = position
         });
@@ -101,7 +101,7 @@ public class ScoreManager : MonoBehaviour
         //애니메이션
         ScoredataList.Add(new ScoreData()
         {
-            str = "Bonus Reset",
+            str = "보너스 리셋",
             color = DataBaseManager.Instance.Scorecolor,
             pos = BonusPos
         }) ;
