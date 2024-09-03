@@ -49,3 +49,8 @@ MonoBehaviour:
   GetIntevalmax: 2
   BounsValue: 0.05
   folSpeed: 5
+  sfxDataArr:
+  - sfxType: 1
+    clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}
+  - sfxType: 2
+    clip: {fileID: 8300000, guid: 5d09e673d2989934c9bf634cbaa9f8aa, type: 3}
