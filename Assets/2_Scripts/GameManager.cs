@@ -26,5 +26,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         platformManager.Active();
+        soundManager.PlayBgm(Define.BgmType.Main);
     }
 }

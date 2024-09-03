@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
-    [SerializeField] private AudioSource Bgm;
-    [SerializeField] private AudioSource Sfx;
+    [SerializeField] private AudioSource BgmSource;
+    [SerializeField] private AudioSource SfxSoucre;
 
     public void init()
     {
@@ -16,6 +16,15 @@ public class SoundManager : MonoBehaviour
     public void PlaySfx(Define.SFXType sfxtype)
     {
         DataBaseManager.SfxData sfxdata = DataBaseManager.Instance.GetSfxclip(sfxtype);
-        Sfx.PlayOneShot(sfxdata.clip);
-    }   
+        SfxSoucre.PlayOneShot(sfxdata.clip);
+        SfxSoucre.volume = sfxdata.volume;
+    }
+
+    public void PlayBgm(Define.BgmType bgmType)
+    {
+        DataBaseManager.BgmData bgm = DataBaseManager.Instance.GetBgmclip(bgmType);
+        BgmSource.clip = bgm.clip;
+        BgmSource.volume = bgm.volume;
+        BgmSource.Play();
+    }
 }

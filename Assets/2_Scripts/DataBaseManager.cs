@@ -9,15 +9,23 @@ public class DataBaseManager : ScriptableObject
     {
         Instance = this;
 
-        foreach(SfxData data in sfxDataArr)
+        foreach (SfxData data in sfxDataArr)
         {
             sfxdataDic.Add(data.sfxType, data);
+        }
+        foreach (BgmData data in BgmDataArr)
+        {
+            bgmdataDic.Add(data.Bgm, data);
         }
     }
 
     public SfxData GetSfxclip(Define.SFXType Type)
     {
         return sfxdataDic[Type];
+    }
+    public BgmData GetBgmclip(Define.BgmType Type)
+    {
+        return bgmdataDic[Type];
     }
 
 
@@ -48,19 +56,27 @@ public class DataBaseManager : ScriptableObject
 
     [Header("사운드")]
     public SfxData[] sfxDataArr;
+    public BgmData[] BgmDataArr;
     private Dictionary<Define.SFXType, SfxData> sfxdataDic = new Dictionary<Define.SFXType, SfxData>();
+    private Dictionary<Define.BgmType, BgmData> bgmdataDic = new Dictionary<Define.BgmType, BgmData>();
 
-    [System.Serializable]
-    public class SfxData
+
+    [System.Serializable] //자식
+    public class SfxData : SoundData
     {
         public Define.SFXType sfxType;
-        public AudioClip clip;
     }
 
-    [System.Serializable]
-    public class BGM
+    [System.Serializable] //자식
+    public class BgmData : SoundData
     {
         public Define.BgmType Bgm;
+    }
+
+    [System.Serializable] //부모
+    public class SoundData
+    {
         public AudioClip clip;
+        public float volume = 1;
     }
 }

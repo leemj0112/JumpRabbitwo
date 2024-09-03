@@ -50,7 +50,13 @@ MonoBehaviour:
   BounsValue: 0.05
   folSpeed: 5
   sfxDataArr:
-  - sfxType: 1
-    clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}
-  - sfxType: 2
-    clip: {fileID: 8300000, guid: 5d09e673d2989934c9bf634cbaa9f8aa, type: 3}
+  - clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}
+    volume: 0.5
+    sfxType: 1
+  - clip: {fileID: 8300000, guid: 5d09e673d2989934c9bf634cbaa9f8aa, type: 3}
+    volume: 0.5
+    sfxType: 2
+  BgmDataArr:
+  - clip: {fileID: 8300000, guid: e0e43c628e1bee542bd57ac3d8780aff, type: 3}
+    volume: 0.2
+    Bgm: 1

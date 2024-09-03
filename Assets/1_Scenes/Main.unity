@@ -744,8 +744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621d539c82cb9a24b9480812fd8bcc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bgm: {fileID: 923360426}
-  Sfx: {fileID: 2022279887}
+  BgmSource: {fileID: 923360426}
+  SfxSoucre: {fileID: 2022279887}
 --- !u!4 &1019311923
 Transform:
   m_ObjectHideFlags: 0
