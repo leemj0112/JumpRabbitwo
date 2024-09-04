@@ -5,6 +5,8 @@ public class Platform : MonoBehaviour
     private BoxCollider2D call;
     [SerializeField] private int score;
 
+    private Animation anim;
+
     public int Score => score;
 
     public float GetHallSizeX => call.size.x * 0.5f;
@@ -12,6 +14,7 @@ public class Platform : MonoBehaviour
     private void Awake()
     {
         call = GetComponentInChildren<BoxCollider2D>();
+        anim = GetComponent<Animation>();
     }
 
 
@@ -32,4 +35,10 @@ public class Platform : MonoBehaviour
     {
         ScoreManager.instance.addScore(score, transform.position);
     }
+
+        internal void OnLandingAnimation()
+    {
+        anim.Play();
+    }
+
 }

@@ -48,7 +48,9 @@ public class Player : MonoBehaviour
         anim.SetInteger("StateID", 0);
         CamaraManager.Instance.OnFollow(transform.position);
 
-        if (collision.transform.parent.TryGetComponent(out Platform platform))
+        if (collision.transform.TryGetComponent(out Platform platform))
+
+            platform.OnLandingAnimation();
 
             ScoreManager.instance.addScore(platform.Score, platform.transform.position);
 
