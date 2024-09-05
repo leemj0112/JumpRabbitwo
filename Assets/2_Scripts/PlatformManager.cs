@@ -68,10 +68,12 @@ public class PlatformManager : MonoBehaviour
         Platform randomPlatform = platforms[randID];
         Platform platform = Instantiate(randomPlatform);
 
-        if (platformNum != 0)
+        bool isfirstPlatform = platformNum == 0;
+
+        if (isfirstPlatform == false)
             pos = pos + Vector3.right * platform.GetHallSizeX;
 
-        platform.Active(pos);
+        platform.Active(pos, isfirstPlatform);
 
         float gap = Random.Range(DataBaseManager.Instance.GetIntevalMin, DataBaseManager.Instance.GetIntevalmax);
         pos = pos + Vector3.right * platform.GetHallSizeX * gap;

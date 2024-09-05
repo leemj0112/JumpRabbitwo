@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
 
             Define.SFXType sFXType = Random.value < 0.5f ? Define.SFXType.Jump1 : Define.SFXType.Jump2;
             SoundManager.instance.PlaySfx(sFXType);
+
+            Effect effect = Instantiate(DataBaseManager.Instance.landingEff);
+            effect.Active(transform.position); //토끼 위치에 생성
         }
     }
 
@@ -51,6 +54,12 @@ public class Player : MonoBehaviour
         if (collision.transform.TryGetComponent(out Platform platform))
 
             platform.OnLandingAnimation();
+
+        if(landPlatform == null)
+        {
+            landPlatform = platform;
+            return;
+        }
 
             ScoreManager.instance.addScore(platform.Score, platform.transform.position);
 

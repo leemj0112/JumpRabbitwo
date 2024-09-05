@@ -18,9 +18,14 @@ public class Platform : MonoBehaviour
     }
 
 
-    public void Active(Vector2 pos)
+    public void Active(Vector2 pos, bool isfirstPlatform)
     {
         transform.position = pos;
+
+        if(isfirstPlatform)
+        {
+            return;
+        }
 
         if (Random.value < DataBaseManager.Instance.ItemSpwanper)
         {
