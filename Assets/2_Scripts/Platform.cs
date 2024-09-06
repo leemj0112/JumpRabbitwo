@@ -8,21 +8,19 @@ public class Platform : MonoBehaviour
     private Animation anim;
 
     public int Score => score;
-
+    public int numder;
     public float GetHallSizeX => call.size.x * 0.5f;
-
     private void Awake()
     {
         call = GetComponentInChildren<BoxCollider2D>();
         anim = GetComponent<Animation>();
     }
-
-
-    public void Active(Vector2 pos, bool isfirstPlatform)
+    public void Active(Vector2 pos, int platformNum)
     {
         transform.position = pos;
+        numder = platformNum;
 
-        if(isfirstPlatform)
+        if(platformNum == 1)
         {
             return;
         }
@@ -32,8 +30,6 @@ public class Platform : MonoBehaviour
             Item item = Instantiate<Item>(DataBaseManager.Instance.BaseItem);
             item.Active(transform.position, GetHallSizeX);
         }
-
-
     }
 
     internal void OnLanding()

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
+    public static PlatformManager instance;
+
     [System.Serializable]
     public class Data
     {
@@ -37,11 +39,29 @@ public class PlatformManager : MonoBehaviour
 
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     private int platformNum = 0;
+    public int LandingPlatformNum;
     internal void Init()
     {
+        instance = this;
         PlatformArrDic.Add(0, DataBaseManager.Instance.SmallPlatformArr);
         PlatformArrDic.Add(1, DataBaseManager.Instance.MiddlePlatformArr);
         PlatformArrDic.Add(2, DataBaseManager.Instance.LargePlatformArr);
+    }
+
+    private void Update()
+    {
+        if(platformNum - LandingPlatformNum < DataBaseManager.Instance.RemainPlatformCount) 
+            // ÇöÀç »ý¼ºµÈ ÇÃ·§Æû - ·£µùÇÑ ÇÃ·§Æû ¹øÈ£ < ÇÃ·§Æû Â÷ÀÌ¶ó¸é
+        {
+            int lastIndex = DataBaseManager.Instance.DataArr.Length -1;
+            Data Lastdata = DataBaseManager.Instance.DataArr[lastIndex];
+
+            for (int i = 0; i < Lastdata.GroupCount; i++)
+            {
+                int platformID =Lastdata.GetPlatformID();
+                ActiveOne(platformID);
+            }
+        }
     }
 
     internal void Active()
@@ -56,25 +76,24 @@ public class PlatformManager : MonoBehaviour
             {
                 int platformID = data.GetPlatformID();
                 ActiveOne(platformID);
-                platformNum++;
             }
         }
     }
 
-    private void ActiveOne( int platformID)
+    private void ActiveOne(int platformID)
     {
+        platformNum++;
         Platform[] platforms = PlatformArrDic[platformID];
 
         int randID = Random.Range(0, platforms.Length);
         Platform randomPlatform = platforms[randID];
+       
         Platform platform = Instantiate(randomPlatform);
 
-        bool isfirstPlatform = platformNum == 0;
-
-        if (isfirstPlatform == false)
+        if (platformNum > 1)
             SpwonPos = SpwonPos + Vector3.right * platform.GetHallSizeX;
 
-        platform.Active(SpwonPos, isfirstPlatform);
+        platform.Active(SpwonPos, platformNum);
 
         float gap = Random.Range(DataBaseManager.Instance.GetIntevalMin, DataBaseManager.Instance.GetIntevalmax);
         SpwonPos = SpwonPos + Vector3.right * platform.GetHallSizeX * gap;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DataBaseManager
   m_EditorClassIdentifier: 
   JumpPowerIncrede: 2
+  GameOverY: -4.5
   BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
   ItemSpwanper: 0.25
   ItemBOnus: 0.25
@@ -34,21 +35,22 @@ MonoBehaviour:
   - {fileID: 2958301332681713053, guid: cd39d73ec6989de43943a811bd8cd5bd, type: 3}
   - {fileID: 2958301332681713053, guid: f1a4d823471cccd45b063c66d7d112a2, type: 3}
   DataArr:
-  - GroupCount: 10
+  - GroupCount: 2
     LargePercent: 1
     MiddlePercent: 0
     SmallPercent: 0
-  - GroupCount: 10
+  - GroupCount: 1
     LargePercent: 0
     MiddlePercent: 1
     SmallPercent: 0
-  - GroupCount: 10
+  - GroupCount: 2
     LargePercent: 0.4
     MiddlePercent: 0.3
     SmallPercent: 0.3
   GetIntevalMin: 1
   GetIntevalmax: 2
   BounsValue: 0.05
+  RemainPlatformCount: 5
   folSpeed: 5
   sfxDataArr:
   - clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}

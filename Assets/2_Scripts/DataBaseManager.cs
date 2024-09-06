@@ -54,6 +54,7 @@ public class DataBaseManager : ScriptableObject
     public float GetIntevalMin = 1.0f;
     public float GetIntevalmax = 2.0f;
     public float BounsValue = 0.05f;
+    public int RemainPlatformCount = 5;
 
     [Header("카메라")]
     public float folSpeed = 5; //CameraManager에서 이동
