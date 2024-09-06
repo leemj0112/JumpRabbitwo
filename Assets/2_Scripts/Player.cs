@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -25,11 +26,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetInteger("StateID", 1);
-        }
+        } //누르는 순간
         else if (Input.GetKey(KeyCode.Space))
         {
             JumpPower += DataBaseManager.Instance.JumpPowerIncrede;
-        }
+        } //누르는 중
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             rigd.AddForce(Vector2.one * JumpPower);
@@ -42,8 +43,15 @@ public class Player : MonoBehaviour
 
             Effect effect = Instantiate(DataBaseManager.Instance.landingEff);
             effect.Active(transform.position); //토끼 위치에 생성
+        } //떼는 순간
+
+        if(transform.position.y < DataBaseManager.Instance.GameOverY)
+        {
+            GameManager.Instance.OnGameOver();
         }
     }
+
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

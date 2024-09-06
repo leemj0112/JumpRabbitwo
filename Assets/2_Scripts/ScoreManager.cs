@@ -10,7 +10,14 @@ public class ScoreManager : MonoBehaviour
     public void init()
     {
         instance = this;
+    }
+
+    public void Active()
+    {
         StartCoroutine(DecScoreCar());
+
+        ScoreTmp.text = tortalScore.ToString();
+        bonusTmp.text = tortalbonus.ToString();
     }
 
     private IEnumerator DecScoreCar()

@@ -9,10 +9,12 @@ public class DataBaseManager : ScriptableObject
     {
         Instance = this;
 
+        sfxdataDic = new Dictionary<Define.SFXType, SfxData>();
         foreach (SfxData data in sfxDataArr)
         {
             sfxdataDic.Add(data.sfxType, data);
         }
+        bgmdataDic = new Dictionary<Define.BgmType, BgmData>();
         foreach (BgmData data in BgmDataArr)
         {
             bgmdataDic.Add(data.Bgm, data);
@@ -31,6 +33,7 @@ public class DataBaseManager : ScriptableObject
 
     [Header("플레이어")]
     [Tooltip("점프를 하면 추가되는 파워")] public float JumpPowerIncrede = 1; //Player에서 이동
+    public float GameOverY = -4.5f; //게임 오버되는 높이
 
     [Header("아이템")]
     public Item BaseItem;
@@ -58,8 +61,8 @@ public class DataBaseManager : ScriptableObject
     [Header("사운드")]
     public SfxData[] sfxDataArr;
     public BgmData[] BgmDataArr;
-    private Dictionary<Define.SFXType, SfxData> sfxdataDic = new Dictionary<Define.SFXType, SfxData>();
-    private Dictionary<Define.BgmType, BgmData> bgmdataDic = new Dictionary<Define.BgmType, BgmData>();
+    private Dictionary<Define.SFXType, SfxData> sfxdataDic;
+    private Dictionary<Define.BgmType, BgmData> bgmdataDic;
 
 
     [System.Serializable] //자식
