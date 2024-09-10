@@ -1,9 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private float JumpPower = 0;
+    private bool isJumpReady = false;
 
     private Rigidbody2D rigd;
     private Animator anim;
@@ -23,54 +23,70 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isJumpReady == false)
         {
-            anim.SetInteger("StateID", 1);
-        } //누르는 순간
-        else if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) //누르는 순간
+            {
+                isJumpReady = true;
+                anim.SetInteger("StateID", 1);
+            }
+        }
+        else
         {
-            JumpPower += DataBaseManager.Instance.JumpPowerIncrede;
-        } //누르는 중
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rigd.AddForce(Vector2.one * JumpPower);
-            JumpPower = 0;
+            JumpPower += DataBaseManager.Instance.JumpPowerIncrede * Time.deltaTime;
+            if(JumpPower > DataBaseManager.Instance.maxJumPower) 
+            {
+                SetIdleState();
+            }
 
-            anim.SetInteger("StateID", 2);
+            if (Input.GetKeyUp(KeyCode.Space))//떼는 순간
+            {
+                isJumpReady = false;
+                if (JumpPower < DataBaseManager.Instance.minJumPower) //최소 점프 파워를 못 넘었을 시
+                {
+                    SetIdleState();
+                }
+                else
+                {
+                    rigd.AddForce(Vector2.one * JumpPower);
+                    JumpPower = 0;
 
-            Define.SFXType sFXType = Random.value < 0.5f ? Define.SFXType.Jump1 : Define.SFXType.Jump2;
-            SoundManager.instance.PlaySfx(sFXType);
+                    anim.SetInteger("StateID", 2);
 
-            Effect effect = Instantiate(DataBaseManager.Instance.landingEff);
-            effect.Active(transform.position); //토끼 위치에 생성
-        } //떼는 순간
+                    Define.SFXType sFXType = Random.value < 0.5f ? Define.SFXType.Jump1 : Define.SFXType.Jump2;
+                    SoundManager.instance.PlaySfx(sFXType);
 
-        if(transform.position.y < DataBaseManager.Instance.GameOverY)
+                    Effect effect = Instantiate(DataBaseManager.Instance.landingEff);
+                    effect.Active(transform.position); //토끼 위치에 생성
+                }
+            }
+        }
+
+        if (transform.position.y < DataBaseManager.Instance.GameOverY)
         {
             GameManager.Instance.OnGameOver();
         }
     }
 
-    
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rigd.velocity = Vector2.zero;
-        anim.SetInteger("StateID", 0);
+        SetIdleState();
         CamaraManager.Instance.OnFollow(transform.position);
 
         if (collision.transform.TryGetComponent(out Platform platform))
-
             PlatformManager.instance.LandingPlatformNum = platform.numder;
-            platform.OnLandingAnimation();
 
-        if(landPlatform == null)
+        platform.OnLandingAnimation();
+
+        if (landPlatform == null)
         {
             landPlatform = platform;
             return;
         }
 
-            ScoreManager.instance.addScore(platform.Score, platform.transform.position);
+        ScoreManager.instance.addScore(platform.Score, platform.transform.position);
 
         if (landPlatform != platform)
         {
@@ -78,6 +94,15 @@ public class Player : MonoBehaviour
             ScoreManager.instance.addBouns(DataBaseManager.Instance.BounsValue, transform.position);
         }
         else ScoreManager.instance.ResetBouns(transform.position);
-            landPlatform = platform;
+        landPlatform = platform;
+    }
+
+    private void SetIdleState()
+    {
+        rigd.velocity = Vector2.zero;
+        anim.SetInteger("StateID", 0);
+        JumpPower = 0;
+        isJumpReady = false;
     }
 }
+

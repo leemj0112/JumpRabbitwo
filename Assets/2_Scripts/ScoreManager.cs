@@ -80,7 +80,10 @@ public class ScoreManager : MonoBehaviour
         if (IsCallBonus)
         {
             int bonusSocre = (int)(score * tortalbonus);
+            if(bonusSocre > 0)
+            {
             addScore(bonusSocre, ScorePos, false);
+            }
         }
 
     }
