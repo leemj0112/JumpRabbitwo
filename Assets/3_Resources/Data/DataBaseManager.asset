@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6252f6dca4e53834fb91b17683ed02c3, type: 3}
   m_Name: DataBaseManager
   m_EditorClassIdentifier: 
-  JumpPowerIncrede: 600
+  JumpPowerIncrede: 1000
   GameOverY: -4.5
-  minJumPower: 300
-  maxJumPower: 1000
+  minJumPower: 1000
+  maxJumPower: 2000
   BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
   ItemSpwanper: 0.25
   ItemBOnus: 0.25

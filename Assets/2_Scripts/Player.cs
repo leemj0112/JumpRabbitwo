@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
 
     private Platform landPlatform;
 
+    private float MoveSpeed = 5f;
+    private float h;
+    private bool isFacingRight = true;
+
     private void Awake()
     {
         rigd = GetComponent<Rigidbody2D>();
@@ -20,27 +24,66 @@ public class Player : MonoBehaviour
     {
 
     }
+    private void Flip()
+    {
+        // 스프라이트를 반전시킴 (X축 크기를 음수로 변경)
+        isFacingRight = !isFacingRight;  // 방향 상태를 반전
+
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;  // X축을 반전시킴
+        transform.localScale = scaler;
+    }
 
     private void Update()
     {
+        //이동
+        h = Input.GetAxisRaw("Horizontal");
+        rigd.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+
+        if (rigd.velocity.x > MoveSpeed)
+        {
+            rigd.velocity = new Vector2(MoveSpeed, rigd.velocity.y); //오른쪽
+        }
+        else if (rigd.velocity.x < MoveSpeed * -1)
+        {
+            rigd.velocity = new Vector2(MoveSpeed * -1, rigd.velocity.y); //왼쪽
+        }
+
+        if (h > 0 && !isFacingRight) // 오른쪽으로 이동 중인데 왼쪽을 보고 있다면
+        {
+            Flip();  // 오른쪽을 보도록 스프라이트 반전
+        }
+        else if (h < 0 && isFacingRight) // 왼쪽으로 이동 중인데 오른쪽을 보고 있다면
+        {
+            Flip();  // 왼쪽을 보도록 스프라이트 반전
+        }
+
+
+        //점프
         if (isJumpReady == false)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //누르는 순간
             {
                 isJumpReady = true;
                 anim.SetInteger("StateID", 1);
+
             }
         }
         else
         {
             JumpPower += DataBaseManager.Instance.JumpPowerIncrede * Time.deltaTime;
-            if(JumpPower > DataBaseManager.Instance.maxJumPower) 
+            rigd.velocity = new Vector2(0, rigd.velocity.y); //속도 멈추기
+
+            if (JumpPower > DataBaseManager.Instance.maxJumPower)
             {
                 SetIdleState();
             }
 
             if (Input.GetKeyUp(KeyCode.Space))//떼는 순간
             {
+                h = Input.GetAxisRaw("Horizontal"); //속도 되돌리기
+                rigd.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+
                 isJumpReady = false;
                 if (JumpPower < DataBaseManager.Instance.minJumPower) //최소 점프 파워를 못 넘었을 시
                 {
@@ -48,7 +91,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    rigd.AddForce(Vector2.one * JumpPower);
+                    rigd.AddForce(Vector2.up * JumpPower);
                     JumpPower = 0;
 
                     anim.SetInteger("StateID", 2);

@@ -32,7 +32,7 @@ public class DataBaseManager : ScriptableObject
 
 
     [Header("플레이어")]
-    [Tooltip("점프를 하면 추가되는 파워")] public float JumpPowerIncrede = 100; //Player에서 이동
+    [Tooltip("점프를 하면 추가되는 파워")] public float JumpPowerIncrede = 1000; //Player에서 이동
     public float GameOverY = -4.5f; //게임 오버되는 높이
     public float minJumPower = 100f; //최소 점프 파워
     public float maxJumPower = 1000f; //최대 점프 파워
