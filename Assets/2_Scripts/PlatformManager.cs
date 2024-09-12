@@ -94,18 +94,25 @@ public class PlatformManager : MonoBehaviour
 
         if (platformNum > 1)
         {
-            // X축 위치 갱신
-            SpwonPos = SpwonPos + Vector3.right * platform.GetHallSizeX;
+            float XOffset = 5.0f; //좌우 이동 간격
+            if (platformNum % 2 == 0)
+            {
+                SpwonPos.x += XOffset; //짝수 플랫폼일 경우 X축을 오른쪽으로 이동
+            }
+            else
+            {
+                SpwonPos.x -= XOffset; //홀수 플랫폼일 경우 X축을 왼쪽으로 이동
+            }
 
-            // Y축 높이 증가 (예: 0.5 ~ 1.5 사이 랜덤 값)
-            float heightIncrease = Random.Range(0.5f, 1.5f);
-            SpwonPos.y += heightIncrease;  // Y축으로 위치 상승
+            // Y축은 계속해서 올라감
+            float yOffset = 1.0f; // 위로 올라가는 간격
+            SpwonPos.y += yOffset; // Y축으로 계속 상승
         }
 
         platform.Active(SpwonPos, platformNum);
 
         float gap = Random.Range(DataBaseManager.Instance.GetIntevalMin, DataBaseManager.Instance.GetIntevalmax);
-        SpwonPos = SpwonPos + Vector3.right * platform.GetHallSizeX * gap;
+        SpwonPos = SpwonPos + Vector3.up * gap; // 추가적으로 Y축 간격을 적용해 더 벌어지도록
 
         return;
     }

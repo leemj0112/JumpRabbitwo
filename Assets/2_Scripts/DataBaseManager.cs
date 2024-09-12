@@ -36,6 +36,7 @@ public class DataBaseManager : ScriptableObject
     public float GameOverY = -4.5f; //게임 오버되는 높이
     public float minJumPower = 100f; //최소 점프 파워
     public float maxJumPower = 1000f; //최대 점프 파워
+    public float MoveSpeed = 10f; //이동속도
 
     [Header("아이템")]
     public Item BaseItem;

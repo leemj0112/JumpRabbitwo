@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,14 +11,22 @@ public class Player : MonoBehaviour
 
     private Platform landPlatform;
 
-    private float MoveSpeed = 5f;
     private float h;
     private bool isFacingRight = true;
+
+    public Slider jumpPowerSlider;
 
     private void Awake()
     {
         rigd = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        // 슬라이더의 최대값을 점프 파워의 최대값으로 설정
+        jumpPowerSlider.maxValue = DataBaseManager.Instance.maxJumPower;
+        jumpPowerSlider.value = 0; // 초기값을 0으로 설정
     }
 
     public void Init()
@@ -40,13 +49,13 @@ public class Player : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         rigd.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
-        if (rigd.velocity.x > MoveSpeed)
+        if (rigd.velocity.x > DataBaseManager.Instance.MoveSpeed)
         {
-            rigd.velocity = new Vector2(MoveSpeed, rigd.velocity.y); //오른쪽
+            rigd.velocity = new Vector2(DataBaseManager.Instance.MoveSpeed, rigd.velocity.y); //오른쪽
         }
-        else if (rigd.velocity.x < MoveSpeed * -1)
+        else if (rigd.velocity.x < DataBaseManager.Instance.MoveSpeed * -1)
         {
-            rigd.velocity = new Vector2(MoveSpeed * -1, rigd.velocity.y); //왼쪽
+            rigd.velocity = new Vector2(DataBaseManager.Instance.MoveSpeed * -1, rigd.velocity.y); //왼쪽
         }
 
         if (h > 0 && !isFacingRight) // 오른쪽으로 이동 중인데 왼쪽을 보고 있다면
@@ -73,6 +82,8 @@ public class Player : MonoBehaviour
         {
             JumpPower += DataBaseManager.Instance.JumpPowerIncrede * Time.deltaTime;
             rigd.velocity = new Vector2(0, rigd.velocity.y); //속도 멈추기
+
+            jumpPowerSlider.value = JumpPower;
 
             if (JumpPower > DataBaseManager.Instance.maxJumPower)
             {
