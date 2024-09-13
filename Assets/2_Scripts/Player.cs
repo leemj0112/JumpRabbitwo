@@ -149,6 +149,16 @@ public class Player : MonoBehaviour
         }
         else ScoreManager.instance.ResetBouns(transform.position);
         landPlatform = platform;
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "MoveDead")
+        {
+            GameManager.Instance.OnGameOver();
+            GameManager.Instance.PauseGame();
+        }
     }
 
     private void SetIdleState()

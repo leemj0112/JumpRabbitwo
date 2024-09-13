@@ -68,6 +68,9 @@ public class DataBaseManager : ScriptableObject
     private Dictionary<Define.SFXType, SfxData> sfxdataDic;
     private Dictionary<Define.BgmType, BgmData> bgmdataDic;
 
+    [Header("올라오는 오브젝트")]
+    public float moveSpeed = 1f; // 오브젝트가 올라가는 속도
+
 
     [System.Serializable] //자식
     public class SfxData : SoundData

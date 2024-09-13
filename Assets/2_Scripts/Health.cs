@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,11 @@ public class Health : MonoBehaviour
     public Image[] Hearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
+
+    internal void init()
+    {
+
+    }
 
     private void Update()
     {

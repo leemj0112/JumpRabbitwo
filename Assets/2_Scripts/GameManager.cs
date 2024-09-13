@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DataBaseManager dataBaseManager;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private SoundManager soundManager;
+    [SerializeField] private Health health;
     [SerializeField] private GameObject ReBtn;
 
 
     public void CallBtnRetry()
     {
         SceneManager.LoadScene(0); //게임 씬 다시 불러오기
+        ResumeGame();
     }
 
     private void Awake()
@@ -33,6 +31,7 @@ public class GameManager : MonoBehaviour
         CamaraManager.init();
         scoreManager.init();
         soundManager.init();
+        health.init();
     }
 
     private void Start()
@@ -45,5 +44,20 @@ public class GameManager : MonoBehaviour
     public void OnGameOver()
     {
         ReBtn.SetActive(true);
+    }
+
+    public void PauseGame()
+    {
+        // 게임 내 모든 물리적 움직임 멈추기
+        Time.timeScale = 0f;
+
+        // UI는 멈추지 않도록 설정하기 (필요 시 추가적인 로직)
+        // 예: 버튼 클릭 등 UI 이벤트 처리
+    }
+
+    public void ResumeGame()
+    {
+        // 게임을 다시 정상적으로 재개하기
+        Time.timeScale = 1f;
     }
 }

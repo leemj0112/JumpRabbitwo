@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6412853562697109698}
   - component: {fileID: 607313664426817083}
   - component: {fileID: 4898719823883327940}
+  - component: {fileID: 6462191427382926839}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f400635711983642bf7d179789b1ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
 --- !u!58 &4898719823883327940
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,3 +167,19 @@ CircleCollider2D:
   m_Offset: {x: 0.30329156, y: -0.26718545}
   serializedVersion: 2
   m_Radius: 0.88272536
+--- !u!111 &6462191427382926839
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183043531632528226}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6b1c90750c01e4d4ba2ebcfc5aa260ee, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 6b1c90750c01e4d4ba2ebcfc5aa260ee, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
