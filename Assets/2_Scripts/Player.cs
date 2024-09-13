@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SetIdleState();
-        CamaraManager.Instance.OnFollow(transform.position);
+        // CamaraManager.Instance.OnFollow(transform.position);
 
         if (collision.transform.TryGetComponent(out Platform platform))
             PlatformManager.instance.LandingPlatformNum = platform.numder;
