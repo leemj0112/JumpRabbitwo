@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public void CallBtnRetry()
     {
         SceneManager.LoadScene(0); //게임 씬 다시 불러오기
+        DataBaseManager.Instance.health = 3;
         ResumeGame();
     }
 

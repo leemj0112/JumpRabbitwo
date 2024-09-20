@@ -18,7 +18,11 @@ MonoBehaviour:
   maxJumPower: 2000
   MoveSpeed: 8
   BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
+  BaseTrap: {fileID: -2733870033986522657, guid: 9d8130e9b915d73448f7524aba79c54f, type: 3}
+  BaseHeart: {fileID: 5386408628208927686, guid: 502a0c40b72ffcb4a8d4c99b895d83a6, type: 3}
   ItemSpwanper: 0.25
+  TrapSpwanper: 0.2
+  heartSpwanper: 0.2
   ItemBOnus: 0.25
   Scorecolor: {r: 1, g: 1, b: 1, a: 0}
   bonuscolor: {r: 0.5424528, g: 0.79135245, b: 1, a: 0}
@@ -66,3 +70,8 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: e0e43c628e1bee542bd57ac3d8780aff, type: 3}
     volume: 0.2
     Bgm: 1
+  moveSpeed: 1
+  health: 0
+  NumOfHeart: 3
+  FullHeart: {fileID: -1390233055, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}
+  EmptyHeart: {fileID: -893281983, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}

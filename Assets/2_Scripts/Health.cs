@@ -4,12 +4,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int health;
-    public int NumOfHeart;
-
     public Image[] Hearts;
-    public Sprite FullHeart;
-    public Sprite EmptyHeart;
+
 
     internal void init()
     {
@@ -18,23 +14,23 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if(health > NumOfHeart)
+        if(DataBaseManager.Instance.health > DataBaseManager.Instance.NumOfHeart)
         {
-            health = NumOfHeart;
+            DataBaseManager.Instance.health = DataBaseManager.Instance.NumOfHeart;
         }
 
         for (int i = 0; i < Hearts.Length; i++)
         {
-            if (i < health)
+            if (i < DataBaseManager.Instance.health)
             {
-                Hearts[i].sprite = FullHeart;
+                Hearts[i].sprite = DataBaseManager.Instance.FullHeart;
             }
             else
             {
-                Hearts[i].sprite = EmptyHeart;
+                Hearts[i].sprite = DataBaseManager.Instance.EmptyHeart;
             }
 
-            if (i < NumOfHeart)
+            if (i < DataBaseManager.Instance.NumOfHeart)
             {
                 Hearts[i].enabled = true; 
             }

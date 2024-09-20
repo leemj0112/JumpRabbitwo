@@ -24,11 +24,23 @@ public class Platform : MonoBehaviour
         {
             return;
         }
-
+        //당근 생성 확률
         if (Random.value < DataBaseManager.Instance.ItemSpwanper)
         {
             Item item = Instantiate<Item>(DataBaseManager.Instance.BaseItem);
             item.Active(transform.position, GetHallSizeX);
+        }
+        //장애물 생성 확률
+        if (Random.value < DataBaseManager.Instance.ItemSpwanper)
+        {
+            Trap trap = Instantiate<Trap>(DataBaseManager.Instance.BaseTrap);
+            trap.Active(transform.position, GetHallSizeX);
+        }
+        //하트 생성 확률
+        if (Random.value < DataBaseManager.Instance.heartSpwanper)
+        {
+            Heart heart = Instantiate<Heart>(DataBaseManager.Instance.BaseHeart);
+            heart.Active(transform.position, GetHallSizeX);
         }
     }
 

@@ -40,7 +40,11 @@ public class DataBaseManager : ScriptableObject
 
     [Header("아이템")]
     public Item BaseItem;
+    public Trap BaseTrap;
+    public Heart BaseHeart;
     public float ItemSpwanper = 0.2f;
+    public float TrapSpwanper = 0.2f;
+    public float heartSpwanper = 0.2f;
     public float ItemBOnus = 0.25f;
 
     [Header("연출")]
@@ -70,6 +74,12 @@ public class DataBaseManager : ScriptableObject
 
     [Header("올라오는 오브젝트")]
     public float moveSpeed = 1f; // 오브젝트가 올라가는 속도
+
+    [Header("하트")]
+    public int health; //체력
+    public int NumOfHeart; //하트 갯수
+    public Sprite FullHeart;
+    public Sprite EmptyHeart;
 
 
     [System.Serializable] //자식
