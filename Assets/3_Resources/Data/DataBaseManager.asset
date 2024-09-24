@@ -20,6 +20,7 @@ MonoBehaviour:
   BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
   BaseTrap: {fileID: -2733870033986522657, guid: 9d8130e9b915d73448f7524aba79c54f, type: 3}
   BaseHeart: {fileID: 5386408628208927686, guid: 502a0c40b72ffcb4a8d4c99b895d83a6, type: 3}
+  plag: {fileID: 1350660009696557503, guid: a0192019df897794dae8e668705c8543, type: 3}
   ItemSpwanper: 0.25
   TrapSpwanper: 0.2
   heartSpwanper: 0.2

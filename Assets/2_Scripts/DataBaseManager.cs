@@ -42,6 +42,7 @@ public class DataBaseManager : ScriptableObject
     public Item BaseItem;
     public Trap BaseTrap;
     public Heart BaseHeart;
+    public Plag plag;
     public float ItemSpwanper = 0.2f;
     public float TrapSpwanper = 0.2f;
     public float heartSpwanper = 0.2f;

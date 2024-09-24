@@ -40,6 +40,8 @@ public class PlatformManager : MonoBehaviour
     Dictionary<int, Platform[]> PlatformArrDic = new Dictionary<int, Platform[]>();
     private int platformNum = 0;
     public int LandingPlatformNum;
+    Plag plag;
+    Platform topPlatform;
 
     bool rightUpPlatfrom = true;
     internal void Init()
@@ -52,6 +54,16 @@ public class PlatformManager : MonoBehaviour
 
     private void Update()
     {
+        if (platformNum >= 10)
+        {
+            if (plag == null)
+            {
+                plag = Instantiate(DataBaseManager.Instance.plag); //위치를 못잡겠네
+                plag.transform.position = topPlatform.transform.position; //제일 높은 플랫폼에 깃발 생성
+            }
+            return; // 더 이상 생성하지 않음
+        }
+
         if (platformNum - LandingPlatformNum < DataBaseManager.Instance.RemainPlatformCount)
         // 현재 생성된 플랫폼 - 랜딩한 플랫폼 번호 < 플랫폼 차이라면
         {
@@ -64,6 +76,12 @@ public class PlatformManager : MonoBehaviour
                 ActiveOne(platformID);
             }
         }
+
+    }
+
+    public void PlagSpwan()
+    {
+
     }
 
     internal void Active()
@@ -110,6 +128,7 @@ public class PlatformManager : MonoBehaviour
         }
 
         platform.Active(SpwonPos, platformNum);
+        topPlatform = platform;
 
         float gap = Random.Range(DataBaseManager.Instance.GetIntevalMin, DataBaseManager.Instance.GetIntevalmax);
         SpwonPos = SpwonPos + Vector3.up * gap; // 추가적으로 Y축 간격을 적용해 더 벌어지도록
