@@ -72,7 +72,10 @@ MonoBehaviour:
     volume: 0.2
     Bgm: 1
   moveSpeed: 1
-  health: 0
+  health: 3
   NumOfHeart: 3
   FullHeart: {fileID: -1390233055, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}
   EmptyHeart: {fileID: -893281983, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}
+  tortalScore: 0
+  BesrScore: 0
+  tortalbonus: 1.5999999

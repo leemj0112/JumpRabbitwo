@@ -16,8 +16,8 @@ public class ScoreManager : MonoBehaviour
     {
         StartCoroutine(DecScoreCar());
 
-        ScoreTmp.text = tortalScore.ToString();
-        bonusTmp.text = tortalbonus.ToString();
+        ScoreTmp.text = DataBaseManager.Instance.tortalScore.ToString();
+        bonusTmp.text = DataBaseManager.Instance.tortalbonus.ToString();
     }
 
     private IEnumerator DecScoreCar()
@@ -60,9 +60,6 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private Score BaseScore;
 
-    private int tortalScore;
-    private float tortalbonus;
-
     public void addScore(int score, Vector2 ScorePos, bool IsCallBonus = true)
     {
         //애니메이션
@@ -74,12 +71,12 @@ public class ScoreManager : MonoBehaviour
         });
 
         //캔버스
-        tortalScore += score;
-        ScoreTmp.text = tortalScore.ToString();
+        DataBaseManager.Instance.tortalScore += score;
+        ScoreTmp.text = DataBaseManager.Instance.tortalScore.ToString();
 
         if (IsCallBonus)
         {
-            int bonusSocre = (int)(score * tortalbonus);
+            int bonusSocre = (int)(score * DataBaseManager.Instance.tortalbonus);
             if(bonusSocre > 0)
             {
             addScore(bonusSocre, ScorePos, false);
@@ -99,14 +96,14 @@ public class ScoreManager : MonoBehaviour
         });
 
         //캔버스
-        tortalbonus += bounsValue;
-        bonusTmp.text = tortalbonus.toPersentString();
+        DataBaseManager.Instance.tortalbonus += bounsValue;
+        bonusTmp.text = DataBaseManager.Instance.tortalbonus.toPersentString();
     }
 
     internal void ResetBouns(Vector2 BonusPos)
     {
-        tortalbonus = 0;
-        bonusTmp.text = tortalbonus.toPersentString();
+        DataBaseManager.Instance.tortalbonus = 0;
+        bonusTmp.text = DataBaseManager.Instance.tortalbonus.toPersentString();
 
         //애니메이션
         ScoredataList.Add(new ScoreData()

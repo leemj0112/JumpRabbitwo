@@ -13,7 +13,7 @@ public class Btn : MonoBehaviour
 
     public void EndGO()
     {
-        SceneManager.LoadScene("EndScene"); 
+        Application.Quit();
         //종료 화면으로
     }
 
@@ -22,4 +22,6 @@ public class Btn : MonoBehaviour
         SceneManager.LoadScene("StartScene"); 
         //시작 화면으로
     }
+
+
 }

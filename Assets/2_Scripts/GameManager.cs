@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         platformManager.Active();
         scoreManager.Active();
         soundManager.PlayBgm(Define.BgmType.Main);
+        DataBaseManager.Instance.health = 3; //체력 초기화
+        DataBaseManager.Instance.tortalScore = 0; //점수 초기화
     }
 
     public void OnGameOver()

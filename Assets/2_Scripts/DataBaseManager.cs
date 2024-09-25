@@ -82,6 +82,11 @@ public class DataBaseManager : ScriptableObject
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
+    [Header("점수")]
+    public int tortalScore; //현재 점수
+    public float BesrScore; //최고 점수
+    public float tortalbonus; //현재 보너스
+
 
     [System.Serializable] //자식
     public class SfxData : SoundData
