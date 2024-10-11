@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
 
     public void CallBtnRetry()
     {
-        SceneManager.LoadScene(0); //게임 씬 다시 불러오기
-        DataBaseManager.Instance.health = 3;
+        SceneManager.LoadScene(1); //게임 씬 다시 불러오기
+        DataBaseManager.Instance.health = 3; //체력 초기화
+        DataBaseManager.Instance.tortalScore = 0; //점수 초기화
+        DataBaseManager.Instance.tortalbonus = 0; //보너스 초기화
         ResumeGame();
     }
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         soundManager.PlayBgm(Define.BgmType.Main);
         DataBaseManager.Instance.health = 3; //체력 초기화
         DataBaseManager.Instance.tortalScore = 0; //점수 초기화
+        DataBaseManager.Instance.tortalbonus = 0; //보너스 초기화
     }
 
     public void OnGameOver()

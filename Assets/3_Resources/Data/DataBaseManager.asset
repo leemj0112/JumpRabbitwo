@@ -16,7 +16,7 @@ MonoBehaviour:
   GameOverY: -4.5
   minJumPower: 500
   maxJumPower: 2000
-  MoveSpeed: 8
+  MoveSpeed: 6
   BaseItem: {fileID: 607313664426817083, guid: dbdf13d28e8e80b42a2953f123833c46, type: 3}
   BaseTrap: {fileID: -2733870033986522657, guid: 9d8130e9b915d73448f7524aba79c54f, type: 3}
   BaseHeart: {fileID: 5386408628208927686, guid: 502a0c40b72ffcb4a8d4c99b895d83a6, type: 3}
@@ -48,34 +48,34 @@ MonoBehaviour:
     MiddlePercent: 0
     SmallPercent: 0
   - GroupCount: 1
-    LargePercent: 0
-    MiddlePercent: 1
+    LargePercent: 0.5
+    MiddlePercent: 0.5
     SmallPercent: 0
   - GroupCount: 2
-    LargePercent: 0.4
-    MiddlePercent: 0.3
-    SmallPercent: 0.3
+    LargePercent: 0.7
+    MiddlePercent: 0.2
+    SmallPercent: 0.1
   GetIntevalMin: 1
   GetIntevalmax: 2
   BounsValue: 0.05
   RemainPlatformCount: 5
   folSpeed: 5
   sfxDataArr:
-  - clip: {fileID: 8300000, guid: 4973db4449778d64cad7dee8f61ee655, type: 3}
+  - clip: {fileID: 8300000, guid: 3c6f70868ff79734ca1e1fd7bf08acbf, type: 3}
     volume: 0.5
     sfxType: 1
-  - clip: {fileID: 8300000, guid: 5d09e673d2989934c9bf634cbaa9f8aa, type: 3}
+  - clip: {fileID: 8300000, guid: ae305a10bf14f73439067955ed5d6fb2, type: 3}
     volume: 0.5
     sfxType: 2
   BgmDataArr:
-  - clip: {fileID: 8300000, guid: e0e43c628e1bee542bd57ac3d8780aff, type: 3}
-    volume: 0.2
+  - clip: {fileID: 8300000, guid: 4d762e970cb64da4bbfc6ef8404b02f9, type: 3}
+    volume: 1
     Bgm: 1
-  moveSpeed: 1
+  moveSpeed: 0.7
   health: 3
   NumOfHeart: 3
   FullHeart: {fileID: -1390233055, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}
   EmptyHeart: {fileID: -893281983, guid: c13bc2e2774d2d9478cf88a92f77ffc7, type: 3}
-  tortalScore: 0
-  BesrScore: 0
-  tortalbonus: 1.5999999
+  tortalScore: 3925
+  BesrScore: 3925
+  tortalbonus: 0.25
